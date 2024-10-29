@@ -1,0 +1,117 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf-field-blocks/acf-button",
+	"title": "ACF Button Link",
+	"description": "Display ACF field as button link.",
+	"category": "acf-field-blocks",
+	"textdomain": "acf-field-blocks",
+	"usesContext": [
+		"postId",
+		"postType",
+		"queryId",
+		"acf-field-blocks/repeaters",
+		"acf-field-blocks/taxonomy",
+		"acf-field-blocks/term",
+		"acf-field-blocks/user"
+	],
+	"attributes": {
+		"fieldKey": {
+			"type": "string",
+			"default": ""
+		},
+		"fieldSource": {
+			"type": "string",
+			"default": ""
+		},
+		"textAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"buttonAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"textSource": {
+			"type": "string",
+			"default": "custom"
+		},
+		"customText": {
+			"type": "string"
+		},
+		"textFieldKey": {
+			"type": "string",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+		"width": {
+			"type": "number"
+		},
+		"asDownload": {
+			"type": "boolean",
+			"default": false
+		},
+		"nofollow": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"color": {
+			"__experimentalSkipSerialization": true,
+			"gradients": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"typography": {
+			"__experimentalSkipSerialization": true,
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"fontAppearance": true,
+				"textTransform": true,
+				"lineHeight": true
+			}
+		},
+		"reusable": false,
+		"spacing": {
+			"__experimentalSkipSerialization": true,
+			"padding": [ "horizontal", "vertical" ],
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalSkipSerialization": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"__experimentalSelector": ".wp-block-acf-field-blocks-acf-button .wp-block-acf-field-blocks-acf-button__link",
+		"ariaLabel": true
+	},
+	"editorStyle": "acf-field-button-editor",
+	"style": "acf-field-button-style"
+}

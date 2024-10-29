@@ -1,0 +1,9 @@
+.acf-field-blocks-fieldkey-control {
+	.components-base-control__field {
+		display: flex;
+		flex-direction: column;
+	}
+	&__notfound {
+		line-height: 32px;
+	}
+}

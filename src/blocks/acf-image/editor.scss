@@ -1,0 +1,187 @@
+// Provide special styling for the placeholder.
+// @todo this particular minimal style of placeholder could be componentized further.
+.wp-block-acf-field-blocks-acf-image {
+	.block-editor-media-placeholder {
+		z-index: 1; // Need to put it above the overlay so the upload button works.
+		backdrop-filter: none; // Removes background blur so the overlay's actual color is visible.
+	}
+
+	// Style the placeholder.
+	.wp-block-acf-field-blocks-acf-image__placeholder,
+	.components-placeholder {
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		display: flex;
+
+		// Hide the upload button, as it's also available in the media library.
+		.components-form-file-upload {
+			display: none;
+		}
+
+		// Show default placeholder height when not resized.
+		min-height: 200px;
+	}
+
+	// The following override the default placeholder styles that remove
+	// its border so that a user selection for border color or width displays
+	// a visual border. They also override the `img { border: none; }` applied
+	// by core.
+	.wp-block-acf-field-blocks-acf-image__placeholder,
+	.components-placeholder,
+	img {
+		box-sizing: border-box;
+		// The following is required to overcome WP Core applying styles that clear
+		// img borders with a higher specificity than those added by the border
+		// block support to provide a default border-style of solid when a border
+		// color or width has been set.
+		&:where(.has-border-color) {
+			border-style: solid;
+		}
+		&:where([style*="border-top-color"]) {
+			border-top-style: solid;
+		}
+		&:where([style*="border-right-color"]) {
+			border-right-style: solid;
+		}
+		&:where([style*="border-bottom-color"]) {
+			border-bottom-style: solid;
+		}
+		&:where([style*="border-left-color"]) {
+			border-left-style: solid;
+		}
+
+		&:where([style*="border-width"]) {
+			border-style: solid;
+		}
+		&:where([style*="border-top-width"]) {
+			border-top-style: solid;
+		}
+		&:where([style*="border-right-width"]) {
+			border-right-style: solid;
+		}
+		&:where([style*="border-bottom-width"]) {
+			border-bottom-style: solid;
+		}
+		&:where([style*="border-left-width"]) {
+			border-left-style: solid;
+		}
+	}
+
+	.acf-field-blocks-image__overlay {
+		box-sizing: border-box;
+		&.has-background-dim {
+			position: absolute;
+			inset: 0;
+			background-color: #000;
+			width: 100%;
+			height: 100%;
+
+			@at-root .wp-block-acf-field-blocks-acf-image {
+				position: relative;
+			}
+		}
+
+		&.has-background-gradient {
+			background-color: transparent;
+		}
+
+		@for $i from 0 through 10 {
+			&.has-background-dim-#{ $i * 10 } {
+				opacity: $i * 0.1;
+			}
+		}
+	}
+
+	// Provide a minimum size for the placeholder when resized.
+	// Note, this should be as small as we can afford it, and exists only
+	// to ensure there's room for the upload button.
+	&[style*="height"] .components-placeholder {
+		min-height: 48px;
+		min-width: 48px;
+		height: 100%;
+		width: 100%;
+	}
+
+	// When the Post Featured Image block is linked,
+	// it's wrapped with a disabled <a /> tag.
+	// Restore cursor style so it doesn't appear 'clickable'.
+	> a {
+		cursor: default;
+	}
+
+	// When the Post Featured Image block is linked,
+	// and wrapped with a disabled <a /> tag
+	// ensure that the placeholder items are visible when selected.
+	&.is-selected .components-placeholder.has-illustration {
+		.components-button,
+		.components-placeholder__instructions,
+		.components-placeholder__label {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+
+	// When image being uploaded.
+	&.is-transient {
+		position: relative;
+
+		img {
+			opacity: 0.3;
+		}
+
+		// Show spinner while image is being uploaded.
+		.components-spinner {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+[data-type="acf-field-blocks/acf-image"] {
+	img {
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}
+
+.acf-field-blocks-default-image {
+	&__wrapper {
+		display: block;
+		background: #f0f0f0;
+		margin-bottom: 8px;
+		img {
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	.components-dropdown {
+		display: block;
+		width: 100%;
+		.components-button {
+			display: block;
+			width: 100%;
+			background: #0000;
+			box-shadow: inset 0 0 0 1px var(--wp-components-color-accent,var(--wp-admin-theme-color,#3858e9));
+			color: var(--wp-components-color-accent,var(--wp-admin-theme-color,#3858e9));
+			outline: 1px solid #0000;
+			white-space: nowrap;
+			&:hover {
+				box-shadow: inset 0 0 0 1px var(--wp-components-color-accent-darker-10,var(--wp-admin-theme-color-darker-10,#2145e6));
+			}
+			&:active {
+				box-shadow: none;
+			}
+			&:focus {
+				box-shadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-components-color-accent,var(--wp-admin-theme-color,#3858e9));
+				outline: 3px solid #0000;
+			}
+		}
+	}
+}

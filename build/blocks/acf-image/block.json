@@ -1,0 +1,101 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf-field-blocks/acf-image",
+	"title": "ACF Image",
+	"description": "Display ACF field as image.",
+	"category": "acf-field-blocks",
+	"textdomain": "acf-field-blocks",
+	"usesContext": [
+		"postId",
+		"postType",
+		"queryId",
+		"acf-field-blocks/repeaters",
+		"acf-field-blocks/taxonomy",
+		"acf-field-blocks/term",
+		"acf-field-blocks/user"
+	],
+	"attributes": {
+		"fieldKey": {
+			"type": "string",
+			"default": ""
+		},
+		"fieldSource": {
+			"type": "string",
+			"default": ""
+		},
+		"width": {
+			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"aspectRatio": {
+			"type": "string"
+		},
+		"scale": {
+			"type": "string",
+			"default": "cover"
+		},
+		"sizeSlug": {
+			"type": "string"
+		},
+		"rel": {
+			"type": "string",
+			"attribute": "rel",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+		"defaultImage": {
+			"type": "number"
+		},
+		"overlayColor": {
+			"type": "string"
+		},
+		"customOverlayColor": {
+			"type": "string"
+		},
+		"dimRatio": {
+			"type": "number",
+			"default": 0
+		},
+		"gradient": {
+			"type": "string"
+		},
+		"customGradient": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"align": [ "left", "center", "right", "wide", "full" ],
+		"anchor": true,
+		"color": {
+			"text": false,
+			"background": false
+		},
+		"filter": {
+			"duotone": true
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalSkipSerialization": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": false
+		}
+	},
+	"editorStyle": "acf-field-image-editor",
+	"style": "acf-field-image-style"
+}

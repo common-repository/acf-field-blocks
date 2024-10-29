@@ -1,0 +1,19 @@
+.wp-block-acf-field-blocks-acf-button {
+
+	&__link {
+		display: inline-block;
+	}
+
+	&__width-25 &__link {
+		width: 25%;
+	}
+	&__width-50 &__link {
+		width: 50%;
+	}
+	&__width-75 &__link {
+		width: 75%;
+	}
+	&__width-100 &__link {
+		width: 100%;
+	}
+}
